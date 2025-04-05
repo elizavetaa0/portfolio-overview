@@ -1,0 +1,140 @@
+.container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #38b2ac, #4299e1);
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.9rem;
+}
+
+.headerCell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px;
+}
+
+.tableBody {
+  flex: 1;
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+}
+
+.cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px;
+}
+
+.positive {
+  color: #38a169;
+}
+
+.negative {
+  color: #e53e3e;
+}
+
+.emptyMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+[data-theme="dark"] {
+  .container {
+    background: #2d3748;
+  }
+
+  .headerRow {
+    background: rgba(255, 255, 255, 0.05);
+    color: #cbd5e0;
+  }
+
+  .row {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+  }
+
+  .positive {
+    color: #9ae6b4;
+  }
+
+  .negative {
+    color: #feb2b2;
+  }
+
+  .emptyMessage {
+    color: #a0aec0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .headerRow,
+  .row {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .headerCell:nth-child(n+4),
+  .cell:nth-child(n+4) {
+    display: none;
+  }
+}
